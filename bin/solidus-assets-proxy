@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+var http = require('http');
+var path = require('path');
+var _ = require('underscore');
+
+var port = process.env.PORT || 80;
+var redirects = path.resolve(process.cwd(), process.argv[2] || 'solidus-assets-proxy-whitelist');
+
+console.log('Reading configuration from ' + redirects);
+redirects = require(redirects);
+
+var server = http.createServer(function(req, res) {
+  var url = unescape(req.url.substring(1));
+
+  if (!url || url === 'status') {
+    res.writeHead(200);
+    res.end(res.statusCode + ' ' + http.STATUS_CODES[res.statusCode]);
+  } else {
+    var match = _.find(redirects, function(redirect) {
+      return redirect && ((_.isRegExp(redirect) && url.match(redirect)) || (_.isString(redirect) && url.indexOf(redirect) === 0));
+    });
+    if (match) {
+      res.writeHead(302, {Location: url});
+      res.end();
+    } else {
+      res.writeHead(406);
+      res.end(res.statusCode + ' ' + http.STATUS_CODES[res.statusCode]);
+    }
+  }
+
+  console.log((new Date).toISOString() + ' ' + res.statusCode + ' ' + url);
+});
+
+server.listen(port, function() {
+  console.log("solidus-assets-proxy server listening on port %s", port);
+});
