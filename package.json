@@ -1,0 +1,42 @@
+{
+  "name": "solidus-assets-proxy",
+  "version": "0.0.0",
+  "author": {
+    "name": "Joannic Laborde",
+    "email": "joannic@sparkart.com",
+    "url": "http://www.sparkart.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/solidusjs/solidus-assets-proxy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solidusjs/solidus-assets-proxy.git"
+  },
+  "main": "index.js",
+  "bin": {
+    "solidus-assets-proxy": "./bin/solidus-assets-proxy"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build",
+    "test": "./node_modules/.bin/gulp test",
+    "node-test": "./node_modules/.bin/gulp node-test",
+    "browser-test": "./node_modules/.bin/gulp browser-test",
+    "test-server": "./node_modules/.bin/gulp test-server"
+  },
+  "devDependencies": {
+    "browserstack-webdriver": "^2.41.1",
+    "browserstacktunnel-wrapper": "^1.4.2",
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-derequire": "^2.1.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "run-sequence": "^1.1.5"
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
