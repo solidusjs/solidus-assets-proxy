@@ -76,8 +76,8 @@ By default, this will run the server on port 80, and load the redirects whitelis
 
 ```javascript
 module.exports = [
-  'http://resource1.com/images',
-  /http:\/\/resource(2|3)\.com\/pictures/
+  'http://resource1.com/images', // String: URL must start with this
+  /http:\/\/resource(2|3)\.com\/pictures/ // RegExp: URL must `match` this
 ];
 ```
 
