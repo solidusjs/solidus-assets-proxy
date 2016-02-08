@@ -5,9 +5,9 @@ var SolidusAssetsProxy = function(options) {
   if (!(this instanceof SolidusAssetsProxy)) return new SolidusAssetsProxy(options);
 
   this.origins = options.origins.map(function(origin) {
-    // Match URL strings from origin up to the query string or ending delimiter
+    // Match URL strings from origin up to the ending delimiter
     var regexp = _.isRegExp(origin) ? origin.source : escapeRegExp(origin);
-    return new RegExp('(^|[\'"\\s\\(])(' + regexp + '.*?)($|[\\?\'"\\s\\)])', 'g');
+    return new RegExp('(^|[\'"\\s\\(])(' + regexp + '.*?)($|[\'"\\s\\)])', 'g');
   });
   this.proxy = options.proxy + (options.proxy.slice(-1) == '/' ? '' : '/');
 };

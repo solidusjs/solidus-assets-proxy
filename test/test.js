@@ -41,7 +41,7 @@ describe('SolidusAssetsProxy', function() {
         \'http://p/https%3A%2F%2Fr%2Fb\' \
         http://p/https%3A%2F%2Fr%2Fc \
         (http://p/https%3A%2F%2Fr%2Fd) \
-        "http://p/https%3A%2F%2Fr%2Fa?a=b"';
+        "http://p/https%3A%2F%2Fr%2Fa%3Fa%3Db"';
       assert.equal(assets_proxy.proxyAssets(from), to);
     });
 
