@@ -35,7 +35,6 @@ Replaces all URLs in a string, matching the `origins` property of the initializa
 
 Note that:
  - The `origins` property can match only the start of the asset URL.
- - The query string part of the matched URL will not be encoded, so services like imgix that support transformation commands will still work. For example `http://resource1.com/images/bg/red.jpg?flip=v` will become `http://proxy.com/http%3A%2F%2Fresource1.com%2Fimages%2Fbg%2Fred.jpg?flip=v`.
 
 ```javascript
 // Preprocessor
